@@ -8,19 +8,23 @@ triângulo).
 
 function Triangle(a, b, c) {
 
-    this.ResultTriangule = () => {
-
-        if(a && b == c) {
-            return console.log(`Equilateral`);
-        } else if(a == b && b != c) {
-            return console.log(`Isosceles`);
-        } else if(a != b != c) {
-            return console.log(`Scalene`);
+    if(a == b && b == c) {
+        if(a==0 && b==0 && c == 0) {
+            return "It's not a Triangle"
+        }
+        return `Equilateral`
+        } 
+        else if(a == b || c == b || a == c) {
+            return 'Isosceles'
+        } 
+        else if(a != b || c != b || a != c) {
+            return 'Scalene';
         }
         else {
-            return console.log("It's not a Triangle");
-        }
+            return "It's not a Triangle"
     }
 }
-const Result = new Triangle(2,2,2)
-Result.ResultTriangule();
+console.log(Triangle(2,2,2));
+console.log(Triangle(2,3,3));
+console.log(Triangle(2,4,6));
+console.log(Triangle(0,0,0));
