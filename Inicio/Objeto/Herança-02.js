@@ -53,43 +53,42 @@ const Filho = { __proto__:Pai, Attr3: 'Filho = C' };
 console.log(Filho.Attr1 +'\n'+ Filho.Attr2 +'\n'+ Filho.Attr3);
 
 const Carro = {
-    VelAtual: 0,
-    Velmax: 200,
+    VelMin: 0,
+    VelMax: 200,
 
     Acelerar(Delta) {
-        if(this.VelAtual + Delta < this.Velmax) {
-            this.VelAtual += Delta;
+        if(this.VelMin + Delta < this.VelMax) {
+            this.VelMin += Delta;
         } else {
-            this.VelAtual = this.Velmax;
+            this.VelMin = this.VelMax;
         }
     },
 
     Status() {
-        return `${this.VelAtual}Km/h de ${this.Velmax}Km/h`;
+        return `${this.VelMin}Km/h de ${this.VelMax}Km/h`;
     }
 }
 
 const Ferrari = {
+    VelMax: 375,
     Modelo: 'F40',
-    Velmax: 350,
-    
     Status() {
-        return `${this.Modelo}: ${super.Status()}`;
+        return `${this.Modelo}: ${super.Status()}`
     }
 }
 
 const Volvo = {
-    Modelo: 'V50',
-    Velmax: 250,
-    
+    Modelo: 'V10',
+    VelMax: 250,
     Status() {
-        return `${this.Modelo}: ${super.Status()}`;
+        return `${this.Modelo}: ${super.Status()}`
     }
 }
 
 Object.setPrototypeOf(Ferrari, Carro);
 Object.setPrototypeOf(Volvo, Carro);
-Volvo.Acelerar(195);
-console.log(Volvo.Status());
-Ferrari.Acelerar(250);
+
+Ferrari.Acelerar(200);
 console.log(Ferrari.Status());
+Volvo.Acelerar(180);
+console.log(Volvo.Status());
