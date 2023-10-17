@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        /* Estilo para células de domingo, sábado e feriados */
+        .holiday {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <label for="month">Selecione um mês:</label>
+    <select id="month">
+        <option value="0">Janeiro</option>
+        <option value="1">Fevereiro</option>
+        <option value="2">Março</option>
+        <option value="3">Abril</option>
+        <option value="4">Maio</option>
+        <option value="5">Junho</option>
+        <option value="6">Julho</option>
+        <option value="7">Agosto</option>
+        <option value="8">Setembro</option>
+        <option value="9">Outubro</option>
+        <option value="10">Novembro</option>
+        <option value="11">Dezembro</option>
+    </select>
+    <label for="year">Ano:</label>
+    <input type="number" id="year" min="1900" max="2100" step="1" value="2023">
+    <button onclick="generateCalendar()">Gerar Calendário</button>
+
+    <table id="calendar">
+        <!-- Tabela de calendário será gerada aqui -->
+    </table>
+
+    <script>
+        // Função para verificar se um dia é um feriado brasileiro
+        function isBrazilianHoliday(day, month, year) {
+            const holidays = [
+                { day: 1, month: 1 }, // Ano Novo
+                { day: 21, month: 4 }, // Tiradentes
+                { day: 1, month: 5 }, // Dia do Trabalho
+                { day: 7, month: 9 }, // Independência do Brasil
+                { day: 12, month: 10 }, // Nossa Senhora Aparecida
+                { day: 2, month: 11 }, // Finados
+                { day: 15, month: 11 }, // Proclamação da República
+                { day: 25, month: 12 }, // Natal
+            ];
+
+            for (const holiday of holidays) {
+                if (holiday.day === day && holiday.month === month) {
+                    return true;
+                }
+            }
+
+            // Carnaval (dois dias antes da Quarta-feira de Cinzas)
+            const carnivalDate = new Date(year, 1, 26);
+            if (carnivalDate.getDate() === day && carnivalDate.getMonth() === month) {
+                return true;
+            }
+
+            // Quarta-feira de Cinzas
+            const ashWednesdayDate = new Date(year, 1, 28);
+            if (ashWednesdayDate.getDate() === day && ashWednesdayDate.getMonth() === month) {
+                return true;
+            }
+
+            // Corpus Christi (60 dias após a Páscoa)
+            const easterDate = new Date(year, 3, 4); // Páscoa em 4 de abril (dia usado para calcular)
+            const corpusChristiDate = new Date(easterDate);
+            corpusChristiDate.setDate(easterDate.getDate() + 60);
+            if (corpusChristiDate.getDate() === day && corpusChristiDate.getMonth() === month) {
+                return true;
+            }
+
+            return false;
+        }
+
+        function generateCalendar() {
+            const monthSelect = document.getElementById("month");
+            const yearInput = document.getElementById("year");
+            const calendarTable = document.getElementById("calendar");
+            calendarTable.innerHTML = ""; // Limpa a tabela
+
+            const selectedMonth = parseInt(monthSelect.value);
+            const selectedYear = parseInt(yearInput.value);
+
+            const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
+
+            for (let i = 1; i <= daysInMonth; i++) {
+                const row = calendarTable.insertRow();
+                const cell = row.insertCell();
+                cell.innerHTML = i;
+
+                if (isBrazilianHoliday(i, selectedMonth, selectedYear) || new Date(selectedYear, selectedMonth, i).getDay() === 0 || new Date(selectedYear, selectedMonth, i).getDay() === 6) {
+                    cell.className = "holiday"; // Aplica a classe "holiday" para marcar como feriado, domingo ou sábado
+                }
+            }
+        }
+    </script>
+</body>
+</html>
