@@ -5,6 +5,24 @@
     <title>Unidades #02</title>
     <style>
         /* ... */
+        .fora {
+            position: relative;
+            background-color: orange;
+            width: 400px;/*Por causa do padding a largura passa a ser 500px. ((50 Esquerdo) + (50 Direito)) = 100 + 400 = 500*/
+            height: 400px;/*Por causa do padding a altura passa a ser 500px. ((50 em cima) + (50 em baixo)) = 100 + 400 = 500*/
+            padding: 50px; 
+            
+        }
+
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            width:100%;
+            position: static; /*Apenas o espaço do conteudo*/
+            position: relative; /*Apenas o espaço do conteudo*/
+            position: absolute; /*((Conteudo 100%) + (50px padding)) = 150 no caso vai extrapolar o limite de 100% então 50px vai ficar fora da caixa* para resolver esse problema ou eu removo meu padding da div .fora ou apenas ajusto dentro da div .dentro o width*/
+            position: fixed; /*Adicionando essa funcionalidade css ele deixa de pegar o 100% da div pai(.Fora) e passa a pegar o 100% da viewport*/
+        }
     </style>
 </head>
 <body>
