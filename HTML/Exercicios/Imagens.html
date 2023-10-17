@@ -1,0 +1,132 @@
+<!-- Início do contêiner do slider -->
+<div wm-slider>
+    <p>   <!-- Primeiro slide -->
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Muro da cidade" width="513" height="342" title="Muro da cidade por Tarso Bessa">
+        <!-- alt="Muro da cidade": Quando ocorre um erro e a imagem não carrega -->
+        <!--width="513" height="342": Lagura da minha imagem: 513 e Altura da minha imagem: 342 -->
+        <!--title="Muro da cidade por Tarso Bessa": Vai aparecer esse titulo na imagem quando o ponteiro do mouse descansar em cima da imagem-->
+    </p>
+    
+    <p> <!-- Segundo slide -->
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro cod3r" width="513" height="342">
+    </p>
+    
+    <p class="circular">   <!-- Terceiro slide com classe "circular" -->
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342">
+    </p>
+    
+    <p class="texto">   <!-- Quarto slide com classe "texto" -->
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" height="50" align="left">  <!-- Imagem à esquerda do texto -->
+        654654644daskdjaldsjçHPIUSAGDIGsdagigfkdjghffhsdhf8yeowhfh asdjhakdsjh iasuhduhwqiuhdd duhqdhhsad
+        dasodhohqwhd wfw9eouf0 ashdkabjdskb wpofeuwuef fjdsadhkaldsbn alkdlahddhqw
+        qwldhoqhd quwhdiquhdw ggwerhujgieuhg 8yeqhendasd pçolkfgvpd iuqwgdubdsfbby 
+        asdkbiqwuygd diudqiuhd iuqwdgugdvbhfiuwhf fwiuetfdvwdjpjf
+    </p>
+    
+    <p class="cidade">   <!-- Quinto slide com classe "cidade" -->
+        <!--Imagem adiciona através do css-->
+    </p>
+    
+    <p> <!-- Sexto slide com uma imagem responsiva usando a tag <picture> -->
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png" media="(min-width:600px)"><!-- Imagem a ser usada em telas grandes -->
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="logo"><!-- Imagem padrão para telas menores -->
+        </picture>
+    </p>
+</div><!-- Fim do contêiner do slider -->
+
+<!-- Estilos CSS -->
+<style> 
+
+    p  /* Estilos para os parágrafos (slides) */
+    {
+        position: absolute;
+        display: none;
+    }
+
+    .circular  /* Estilos para slides com classe "circular" */
+    {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto  /* Estilos para slides com classe "texto" */
+    {
+        width: 400px;
+    }
+
+    .texto img    /* Estilos para imagens dentro de slides com classe "texto" */
+    {
+        margin-right: 10px;
+    }
+
+    .cidade   /* Estilos para slides com classe "cidade" */
+    {
+        width: 513px;
+        height: 342px;
+        background-image: url("http://files.cod3r.com.br/curso-web/imagem4.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
+
+<!-- Script JavaScript para animação de slider -->
+
+<script>
+
+    // Função para mover um elemento gradualmente
+    function mover(elem, inicio, fim, passo, callback) {   
+        const novoInicio = inicio - passo
+        if(novoInicio >= fim){
+            elem.style.left = novoInicio + 'px'
+              // Aguarde um curto período de tempo antes de chamar a função mover novamente
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        }else{
+             // Quando a animação estiver concluída, chame a função de retorno de chamada
+            callback()
+        }
+    }
+
+    /*const p = document.querySelector('[wm-slider] > p')  
+    p.style.display = 'block'
+    mover(p, 1500, -520, 5, ()=> {
+        console.log('Terminou!!!')
+    })*/
+
+
+    // Função principal para controlar o slider
+    function slider() {
+        // Seleciona todos os elementos <p> dentro do contêiner com atributo wm-slider
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        const slides = Array.from(elementos)// Converte a lista de elementos em um array
+        exibirSlide(slides, slides[0])// Inicia a exibição do primeiro slide
+    } 
+
+        // Função para exibir um slide e iniciar a animação
+        function exibirSlide(slides, slide){
+
+            slide.style.display = 'block' // Exibe o slide atual
+
+            const inicio = innerWidth  // Define a posição inicial como a largura da janela (tela)
+            const fim = -slide.clientWidth   // Define a posição final como a largura negativa do slide
+            
+            slide.style.left = `${inicio}px` // Define a posição inicial do slide
+          
+            mover(slide, inicio, fim, 10, () => {  // Inicia a animação de mover o slide
+                slide.style.display = 'none'  // Quando a animação estiver concluída, oculta o slide
+                exibirSlide(slides, getProximo(slides, slide))  // Obtém o próximo slide na lista e continua a animação
+            })
+        }
+        // Função para obter o próximo slide na lista
+        function getProximo(lista, atual) {
+             // Obtém o índice do slide atual na lista
+            const i = lista.indexOf(atual) + 1
+            // Se for o último slide, retorna o primeiro da lista, caso contrário, retorna o próximo
+            return i < lista.length ? lista[i] : lista[0]
+        }
+
+    // Iniciar o slider quando a página carregar
+    slider()
+    
+</script>

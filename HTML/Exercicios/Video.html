@@ -1,0 +1,97 @@
+
+    <!-- Início da seção HEAD -->
+
+    <title>Vídeos</title>
+    <!-- Define o título da página -->
+
+    <style>
+        /* Estilos CSS para a barra de progresso do vídeo */
+        .progresso {
+            height: 20px; /* Define a altura da barra de progresso */
+            width: 500px;  /* Define a largura da barra de progresso */
+            border: 1px solid #444; /* Adiciona uma borda à barra de progresso */
+            margin: 20px;   /* Adiciona margem ao redor da barra de progresso */
+        }
+
+        /* Estilos CSS para a parte preenchida da barra de progresso */
+        .progresso > div { 
+            background-color: red;  /* Define a cor de fundo da parte preenchida da barra de progresso */ 
+            color: #fff;   /* Define a cor do texto na parte preenchida da barra de progresso */
+            height: 100%;     /* Define a altura da parte preenchida da barra de progresso como 100% da altura da barra de progresso */
+            text-align: right;  /* Alinha o texto à direita na parte preenchida da barra de progresso */
+            font-size: 14px; /* Define o tamanho da fonte para o texto na parte preenchida da barra de progresso */
+            width: 0%;/* Define a largura inicial da parte preenchida da barra de progresso como 0% */
+
+        }
+    </style>
+
+    <!-- Título da página -->
+    <h1>Vídeos</h1>
+
+    <!-- Tag de vídeo com controles e URL do vídeo -->
+    <video id="meuVideo" width="800" height="450" controls controlsList="nodownload">
+        <!-- Define um vídeo com controles de reprodução -->
+        <!-- Atributos width e height definem as dimensões do vídeo -->
+        <!-- controlsList="nodownload" impede o download do vídeo -->
+        <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+        <!-- Define a fonte do vídeo e o tipo de arquivo -->
+        <!-- Mensagem de fallback caso o navegador não suporte vídeo -->
+        Seu navegador não suporta a tag video
+    </video>
+
+    <!-- Barra de progresso do vídeo -->
+    <div wm-progresso="meuVideo" class="progresso">
+        <div></div>
+    </div>
+    <!-- Define a barra de progresso para o vídeo -->
+
+    <!-- Botões para controlar o vídeo -->
+    <div>
+        <button wm-play="meuVideo">Play</button> <!-- Botão "Play" para reproduzir o vídeo -->
+        <button wm-pause="meuVideo">Pause</button> <!-- Botão "Pause" para pausar o vídeo -->
+        <button wm-diminuirVelocidade="meuVideo">-</button> <!-- Botão "-" para diminuir a velocidade de reprodução do vídeo -->
+        <button wm-aumentarVelocidade="meuVideo">+</button> <!-- Botão "+" para aumentar a velocidade de reprodução do vídeo -->
+        <button wm-retroceder="meuVideo"> &lt; 5</button> <!-- Botão "< 5" para retroceder 5 segundos no vídeo -->
+        <button wm-avancar="meuVideo">5 &gt;</button> <!-- Botão "5 >" para avançar 5 segundos no vídeo -->
+        <button wm-baixarVolume="meuVideo"> < Baixar volume </button> <!-- Botão "Baixar volume" para diminuir o volume do vídeo -->
+        <button wm-aumentarVolume="meuVideo">  Aumentar volume > </button> <!-- Botão "Aumentar volume" para aumentar o volume do vídeo -->
+        <button wm-mutar="meuVideo">  muted</button>
+        <button wm-desMutar="meuVideo">  Desmuted</button>
+    </div>
+    <!-- Define botões para controlar o vídeo -->
+
+    <!-- Script para configurar o vídeo e controlar as ações -->
+    <script>
+        // Início da seção JavaScript
+
+        
+        function configurarVideo(id) { // Função para configurar o vídeo e os botões de controle
+            const video = document.getElementById(id);
+            video.oncontextmenu = () => false; // Impede o menu de contexto para evitar o download
+           
+            document.querySelector(`[wm-play=${id}]`).onclick = e => video.play(); // Associa a função de reprodução ao botão "Play" do vídeo
+            document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause(); // Associa a função de pausa ao botão "Pause" do vídeo
+            document.querySelector(`[wm-diminuirVelocidade=${id}]`).onclick = e => video.playbackRate -= 0.10; // Associa a função de diminuir a velocidade ao botão "-" do vídeo
+            document.querySelector(`[wm-aumentarVelocidade=${id}]`).onclick = e => video.playbackRate += 0.10; // Associa a função de aumentar a velocidade ao botão "+" do vídeo
+            document.querySelector(`[wm-retroceder=${id}]`).onclick = e => video.currentTime -= 5; // Associa a função de retroceder 5 segundos ao botão "< 5" do vídeo
+            document.querySelector(`[wm-avancar=${id}]`).onclick = e => video.currentTime += 5;// Associa a função de avançar 5 segundos ao botão "5 >" do vídeo
+            document.querySelector(`[wm-baixarVolume=${id}]`).onclick = e => video.volume -= 0.3; // Associa a função de baixar o volume ao botão "Baixar volume" do vídeo
+            document.querySelector(`[wm-aumentarVolume=${id}]`).onclick = e => video.volume += 0.3; // Associa a função de aumentar o volume ao botão "Aumentar volume" do vídeo
+            document.querySelector(`[wm-mutar=${id}]`).onclick = e => video.muted = true 
+            document.querySelector(`[wm-desMutar=${id}]`).onclick = e => video.muted = false
+     
+           // Define um intervalo para atualizar continuamente a barra de progresso do vídeo
+            setInterval(() => {
+                const percentual = (video.currentTime / video.duration) * 100; // Calcula o percentual de progresso do vídeo (tempo atual / duração total)
+                const valorDiv = document.querySelector(`[wm-progresso=${id}] > div`);// Seleciona o elemento div da barra de progresso com um atributo wm-progresso igual ao ID do vídeo
+                valorDiv.style.width = `${percentual}%`;// Define a largura da barra de progresso com base no percentual calculado
+                valorDiv.innerHTML = `${percentual.toFixed(1)}%`;  // Atualiza o conteúdo dentro da barra de progresso com o percentual formatado
+            });
+
+        }
+        // Fim da seção JavaScript
+
+        // Chama a função para configurar o vídeo
+        configurarVideo('meuVideo');
+    </script>
+    <!-- Fim da seção BODY -->

@@ -1,0 +1,66 @@
+<style>
+   .Titulos
+   {
+    color: red;
+   }
+</style>
+
+<h1>Projeto</h1>
+<ul class="tree">  <!-- Estrutura de árvore -->
+    <li>
+         <!-- Pasta "Back-End" que pode ser expandida/recolhida -->
+        <span class="Titulos" wm-folder>Back-End</span> <!--Criei uma classe Titulos para alterar o estilo do Titulo informado e criei jutamente um atributo (wm-folder) para manipular minhas pastas-->
+         <!-- Subpastas e arquivos estão dentro desta lista -->
+        <ul>
+             <!-- Item da árvore (pasta) -->
+            <li>
+                <!-- Pasta "App" que pode ser expandida/recolhida -->
+                <span class="Titulos" wm-folder>App</span> <!--Criei uma classe Titulos para alterar o estilo do Titulo informado e criei jutamente um atributo (wm-folder) para manipular minhas pastas-->
+                <!-- Lista de arquivos dentro da pasta "App" -->
+                <ul>
+                    <li>Produto.js</li>
+                    <li>Usuario.js</li>
+                    <li>Venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <!-- Pasta "Config" que pode ser expandida/recolhida -->
+                <span class="Titulos" wm-folder>Config</span> <!--Criei uma classe Titulos para alterar o estilo do Titulo informado e criei jutamente um atributo (wm-folder) para manipular minhas pastas-->
+                <ul>
+                    <!-- Lista de arquivos dentro da pasta "config" -->
+                    <li>Banco.js</li>
+                    <li>Rotas.js</li>
+                    <li>Servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <!-- Pasta "Front-End" que pode ser expandida/recolhida -->
+        <span class="Titulos" wm-folder>Front-End</span> <!--Criei uma classe Titulos para alterar o estilo do Titulo informado e criei jutamente um atributo (wm-folder) para manipular minhas pastas-->
+        <ul>
+            <!-- Lista de arquivos dentro da pasta "Front-End" -->
+            <li>
+                <!-- Pasta "Public" que pode ser expandida/recolhida -->
+                <span class="Titulos" wm-folder>Public</span><!--Criei uma classe Titulos para alterar o estilo do Titulo informado e criei jutamente um atributo (wm-folder) para manipular minhas pastas-->
+                <ul>
+                    <!-- Lista de arquivos dentro da pasta "Public" -->
+                    <li>App.cs</li>
+                    <li>App.js</li>
+                    <li>Index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    document.querySelectorAll('[wm-folder]').forEach(folder =>{ // Seleciona todos os elementos com o atributo "wm-folder" (pastas)
+        folder.onclick = function(e){  // Define uma função a ser executada quando uma pasta é clicada
+            const ul = folder.nextElementSibling; // Obtém a próxima lista (ul) após a pasta clicada (subpastas e arquivos)
+            const d = ul.style.display; // Verifica o estilo de exibição atual da lista
+            ul.style.display = d === 'none' ? 'block' : 'none'; // Se d for igual a 'none', a lista será expandida (exibição 'block'), caso contrário, será recolhida (exibição 'none').
+        } 
+    })
+</script>

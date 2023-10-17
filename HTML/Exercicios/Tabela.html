@@ -1,0 +1,67 @@
+<h1>Tabela</h1> <!-- Esta é uma tabela HTML com um título e três seções principais: cabeçalho (thead), corpo (tbody) e rodapé (tfoot). -->
+
+<table> <!-- Aqui começa a definição da tabela -->
+    <caption>Produto</caption>  <!-- A legenda(titulo) da tabela é definida usando a tag <caption> -->
+    <thead>   <!-- O cabeçalho da tabela é definido dentro da tag <thead> -->
+        <tr> <!-- Esta linha define o cabeçalho da tabela -->
+            <td>Produto </td>  <!-- Esta célula contém o título "Produto" -->
+            <td>Preço </td> <!-- Esta célula contém o título "Preço" -->
+            <td>Quantidade </td>  <!-- Esta célula contém o título "Quantidade" -->
+            <td>Total </td> <!-- Esta célula contém o título "Total" -->
+        </tr> <!-- Fim do cabeçalho da tabela -->
+    </thead>
+    <tbody>  <!-- O corpo da tabela é definido dentro da tag <tbody> -->
+        <tr> <!-- Esta linha define uma linha de dados na tabela -->
+            <td>iPad</td>  <!-- Esta célula contém o nome do produto "iPad" -->
+            <td>3.289,00</td> <!-- Esta célula contém o preço do produto "iPad" -->
+            <td>5</td> <!-- Esta célula contém a quantidade do produto "iPad" -->
+            <td>16.455,00</td> <!-- Esta célula contém o total para o produto "iPad" -->
+        </tr>  <!-- Fim da primeira linha de dados sobre iPad -->
+
+        <tr>  <!-- Esta linha define outra linha de dados(samgung) na tabela -->
+            <td>Samsung S9</td> <!-- Esta célula contém o nome do produto "Samsung S9" -->
+            <td>2.649,00</td> <!-- Esta célula contém o preço do produto "Samsung S9" -->
+            <td>8</td> <!-- Esta célula contém a quantidade do produto "Samsung S9" -->
+            <td>21.192,00</td>  <!-- Esta célula contém o total para o produto "Samsung S9" -->
+        </tr> <!-- Fim da segunda linha de dados sobre samsung-->
+    </tbody>
+    <tfoot>  <!-- O rodapé da tabela é definido dentro da tag <tfoot> -->
+        <tr>
+            <td colspan="3">Total</td>
+            <!--Coslpan ocupa linhas na horizontal-->
+            <!--rowspan ocupa linhas na vertical-->
+            <td>37.637,00</td>
+    </tfoot>
+</table>
+
+<style>
+    table
+    {
+        border-collapse: collapse;/* Define a borda entre as células da tabela como colapsada (sem espaços) */
+    }
+
+    th, td
+    {
+        padding: 10px; /* Adiciona um espaçamento interno de 10 pixels nas células do cabeçalho e do corpo */
+        text-align: center; /* Centraliza o texto nas células */
+    }
+    
+    thead td
+    {
+        border-bottom: solid 3px #000000;  /* Adiciona uma borda inferior sólida de 3 pixels nas células do cabeçalho */
+    }
+
+    tbody tr:hover
+    {
+        background-color: gray; /* Muda a cor de fundo das linhas do corpo quando o mouse passa por cima */
+
+    }
+
+    tfoot td
+    {
+        background-color: rgb(49, 48, 48); /* Define a cor de fundo das células do rodapé */
+        color: aliceblue; /* Define a cor do texto no rodapé como branco (aliceblue) */
+        font-weight: bold; /* Torna o texto no rodapé em negrito */
+        text-align: left;  /* Alinha o texto no rodapé à esquerda */
+    }
+</style>

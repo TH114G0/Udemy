@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios HTML</title>
+
+    <style>
+
+        #Conteudo
+        {
+            padding: 30px 0px;
+        }
+
+        footer
+        {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Exercícios</h1>
+    </header>
+    <nav> 
+        <a href wm-nav="/HTML/Exercicios/Texto01.html">01 - Texto 1</a> | <!-- Links de navegação com atributo personalizado "wm-nav" apontando para outros arquivos HTML -->
+        <a href wm-nav="/HTML/Exercicios/Texto02.html">02 - Texto 2</a> |
+        <a href wm-nav="/HTML/Exercicios/Listas.html">03 - Listas</a> |
+        <a href wm-nav="/HTML/Exercicios/ListasAninhadas.html">04 - Listas Aninhadas</a> |
+        <a href wm-nav="/HTML/Exercicios/Links01.html">05 - Links HTML</a> |
+        <a href wm-nav="/HTML/Exercicios/Tabela.html">06 - Tabela</a> |
+        <a href wm-nav="/HTML/Exercicios/form/form.html">07 - Formulários</a> |
+        <a href wm-nav="/HTML/Exercicios/Imagens.html">08 - Imagens</a> |
+        <a href wm-nav="/HTML/Exercicios/Video.html">09 - Vídeos</a> |
+        <a href wm-nav="/HTML/Exercicios/TagsNaoVisuais.html">10 - Tags não visuais HTML</a> |
+
+    </nav>
+
+    <section id="Conteudo">
+
+    </section>
+
+    <footer>Curso de Web moderno</footer>
+
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => { //Isso seleciona todos os elementos HTML que possuem o atributo wm-nav e, em seguida, itera sobre eles usando o método forEach. Isso permite que você execute um bloco de código para cada elemento encontrado.
+            const Conteudo = document.getElementById('Conteudo'); // Obtém a referência ao elemento com ID "Conteudo"
+            
+            link.onclick = function(e){ //Para cada elemento com o atributo wm-nav, você atribui uma função ao evento onclick. Isso significa que quando o link é clicado, a função será executada.
+                e.preventDefault(); //  Isso impede o comportamento padrão do link, que seria navegar para outra página. Em vez disso, você vai carregar o conteúdo da página sem sair.
+                fetch(link.getAttribute('wm-nav')) //Este código usa a função fetch para fazer uma requisição HTTP ao URL especificado no atributo wm-nav do link. Isso busca o conteúdo da página de destino de forma assíncrona.
+                    .then(resp => resp.text())// Finalmente, após a resposta ter sido convertida em texto, este código atualiza o conteúdo da seção com ID "Conteudo"
+                    .then(html => Conteudo.innerHTML = html) // Depois dessa conversão, o conteúdo da página de destino se torna uma string de texto simples, que pode ser inserida no HTML da página atual usando .then(html => Conteudo.innerHTML = html) para atualizar o conteúdo da seção identificada pelo ID 'Conteudo' com o HTML retornado pela requisição.
+            }
+        })
+    </script>
+</body>
+</html>
