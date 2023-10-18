@@ -11,10 +11,72 @@
             margin: 0;
         }
 
+        html {
+            font-size: 28px;
+        }
+
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        div {
+            font-size: 50px;
+        }
+
+        p {
+            /*Valores de padrões de font*/
+            font-size: 1em;/*Padrão do browser e multiplica com o valor do em; exemplo: 16 X 1em = 16, 16 x 2em = 32, etc...*/
+            font-size: 100%;/*Padrão do browser 16; 100% de 16 é = 16, 50% de 16 é = 8, etc...*/
+            font-size: 16px;
+            font-size: 12pt;
+
+            /*unidades absolutas*/
+            font-size: 100px; /*Tamanho do pixel é relativo*/
+            font-size: 72pt; /*Pontos*/
+            font-size: 1in; /*polegada*/
+
+            /*Unidades relativas*/
+            
+            font-size: 2.2em;/*obs: Pega a referência mais proxima. exemplo: browser = 16; Mas se eu conter dentro da elemento pai algo sobre o tamanho da font, ele vai pegar como referência ao invés de pegar do browser*/
+            font-size: 2.2rem;/*Pega referência da raiz*/
+            font-size: 50vh; /*Altura da viewport*/
+            font-size: 10vw; /*Largura da viewport*/
+
+
+            font-family: monospace;/*Todas as letras ocupam o mesmo espaço*/
+            font-family: Georgia, serif;/*Font serifada*/
+            font-family: Verdana, sans-serif;
+            font-family: 'Indie Flower', cursive;
+
+
+            font-weight: 100;
+            font-style: italic;
+            text-transform: uppercase;
+            /*text-decoration: overline underline line-through; //Estilo de linhas no texto. Sobre a letra, em cima da letra ou em baixo da letra*/
+            word-spacing: 10px; /*Adiciona ou remove o espaço entre as palavras*/
+            letter-spacing: 10px; /*Adiciona ou remove o espaço entre as letras*/
+            line-height: 120px; /*Adicona espaço ou remove o espaço entre as linhas*/
+            text-decoration: none;
+            text-align: center;/*Ajusta a posição do texto. Exemplo: direita, esquerda ou centro*/
+        }
+
+        .botao {
+            font-size: 50px;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 25px;   
+        }
+
+        .destaque {
+            color: white;
+            background: tomato;
+            box-shadow: 2px 2px 1px 2px black;
+        }
+
+        .destaque:active { /*Gera alguma ação ao clicar no botão*/
+            box-shadow: none;
         }
     </style>
 </head>
