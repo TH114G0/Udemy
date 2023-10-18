@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo sobre position</title>
+        
+    <style>
+
+        html {
+            padding-bottom: 1000px;
+        }
+        div {
+            height: 50px;
+            background-color: #ccc;
+            border: solid 1px #222;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .relative {
+            position: relative;
+            background-color: #321;
+            color: white;
+        }
+
+        .relative-alterada {
+            top:10px;
+            left: 20px;
+        }
+
+        .absolute {
+            position: absolute; 
+            height: 25px;
+            width: 70px;
+            background-color: #914;
+            top: 10px;
+            right: 20px;
+        }
+
+        .Fixed {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-color: #528;
+        }
+
+        .Sticky {
+            top:10px;
+            position: sticky;
+            height: 50px;
+            width: 100px;
+            background-color: #253;
+        }
+    </style>
+
+</head>
+<body>
+    <!--STATIC-->
+    <div>static</div>
+    <div class="Sticky">Sticky</div>
+    <div>static</div>
+    <div class="relative relative-alterada">relative
+        <div class="absolute">Absolute</div>
+    </div>
+    <div>static</div>
+    <P>Este é meu parágrafo</P>
+    <div class="Sticky">Sticky</div>
+    <div>static</div>
+    <!--Relative-->
+    <div class="relative">relative
+        <div class="absolute">Absolute</div>
+    </div>
+    <!--Absolute-->
+    <div class="absolute">Absolute</div>
+    <!--Fixed-->
+    <div class="Fixed">Fixed</div>
+
+</body>
+</html>
