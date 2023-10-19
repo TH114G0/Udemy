@@ -7,101 +7,105 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        /**/
 
-       * {
-        box-sizing: border-box;
-       }
-       
+        * {
+            box-sizing: border-box;
+           
+        }
 
-       body {
-        border: 1px solid ;
-        background-color: #042326;
-       }
+        body {
+            margin: 0;
+            font-family: 'Oswald', sans-serif;
+            background-color: #0A3A40;
+           
+        }
 
-       .cabecalho {
-        height: 60px;
-        box-sizing: content-box;
-       }
+        .cabecalho {
+            background-color: #042326;
+            height: 80px;
+            box-sizing: content-box;
+        }
 
-       .logo {
-            margin: 5px;
+        .logo { 
             display: inline-block;
-            height: 50px;  
-       }
+            height: 80px;
+            padding: 15px;
+        }
 
-       .logo img {
+        .logo img {
             height: 100%;
-       }
+        }
 
-       .menu-toggle {
+        .menu-toggle {
             float: right;
-            margin: 12px;
-            padding: 10px;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 15px;
+            margin: 20px;
             display: none;
-       }
-       
-       .menu {
+        }
+
+        .menu {
             display: inline-block;
             vertical-align: top;
-            height:60px;
-            padding: 5px;
+            height: 80px;
+            padding: 20px;
             font-size: 22px;
-       }
+        }
 
-       .menu ul { 
+        .menu ul {
             padding: 0;
             margin: 0;
-            display: flex;
-            
-       }
+        }
 
-       .menu li {
-            list-style: none;
-            padding: 15px;   
-            height: 45px;
-       }
+        .menu li {
+           display: inline-block;
+          
+        }
 
-       .menu li a {
+        .menu a:hover {
+            background-color: #0A3A40;
+            border-radius: 8px;
+        }
+
+        .cabecalho a {
+            text-decoration: none;
             color: #997729;
-           
-       }
+        }
 
-       .menu li:hover { 
-        
-        border-radius: 10px;
-        background-color: #0A3A40;
-       }
+        .menu a {
+            padding: 15px;
+        }
 
-       .cabecalho a {
-        text-decoration: none;
-       }
-       
-       .autenticacao {
+        .autenticacao {
+            height: 80px;
             float: right;
-            padding: 19px;
-            font-size: 20px;
-            height: 60px;
-       }
+            padding: 25px;
+        }
 
-       .autenticacao a {
+        .autenticacao a {
+            text-decoration: none;
             color: white;
-       }
+            font-size: 22px;
+        }
 
-       .botao {
-            padding: 7px;  
-       }
+        .botao { 
+            
+            padding: 10px;
+           
+        }
 
-       .destaque {
-            background-color: red;
+        .destaque {
+            background-color: red; 
             border-radius: 10px;
-       }
+        }
 
-       .destaque:hover {
+        .destaque:hover {
             background-color: #800000;
-       }
+        }
 
-       @media (max-width: 869px) {
+        @media (max-width: 869px) {
             .autenticacao {
                 display: none;
             }
@@ -118,7 +122,6 @@
                 display: block;
             }
         }
-
     </style> 
 </head>
 
