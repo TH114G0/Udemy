@@ -7,7 +7,61 @@
     <link rel="stylesheet" href="css/tag.css">
     <style>
         /* ... */
-    </style>
+
+        /* Define a classe .big para ajustar o tamanho da fonte para 1.5 vezes o tamanho padrão. */
+        .big {
+            font-size: 1.5em;
+        }
+
+        /* Define a classe .flex-container para configurar um contêiner flexível. */
+        .flex-container {
+            display: flex;/* Configura o contêiner para usar o modelo de layout flexível. */
+            width: 50%;/* Define a largura do contêiner como 50% do espaço disponível. */
+            height: 200px;/* Define a altura do contêiner como 200 pixels. */
+            
+
+            /*FLEX-DIRECTION / INICIO -Propriedades relacionadas à direção dos elementos no contêiner. */
+                flex-direction: column; /* Coloca os elementos na vertical. */
+                flex-direction: column-reverse;/* Inverte a ordem dos elementos na vertical. */
+                flex-direction: row-reverse; /* Inverte a ordem dos elementos na horizontal. */
+                flex-direction: row; /* Mantém a ordem dos elementos na horizontal. */
+           /*FLEX-DIRECTION / FIM*/
+
+            /* FLEX / INICIO - Propriedades relacionadas ao empacotamento dos elementos. */
+                flex-wrap: wrap;/* Permite que os elementos quebrem para a próxima linha quando não cabem. */
+                flex-wrap: wrap-reverse;/* Quebra os elementos para a próxima linha, invertendo a ordem. */
+                flex-flow: row wrap; /* Configura a direção e o empacotamento em uma única linha. */
+                flex-flow: column-reverse wrap;/* Configura a direção invertida e o empacotamento. */
+            /* FLEX / FIM */
+
+            /* JUSTIFY-CONTENT /INICIO - Propriedades para alinhar horizontalmente os elementos. */
+                justify-content: flex-start;/* Alinha os elementos à esquerda. */
+                justify-content: flex-end;/* Alinha os elementos à direita. */
+                justify-content: center;  /* Centraliza os elementos horizontalmente. */
+                justify-content: space-around;/* Distribui o espaço disponível igualmente ao redor dos elementos. */
+                justify-content: space-between;/* Distribui o espaço disponível entre os elementos, mas não nos extremos. */
+                /* JUSTIFY-CONTENT /FIM*/
+                
+                height: 400px; /* Define a altura do contêiner como 400 pixels. */
+                
+                
+                /* ALIGN-ITEMS / INICIO - Propriedades para alinhar verticalmente os elementos. */
+                    align-items: stretch; /* Os elementos esticam para preencher a altura do contêiner. */
+                    align-items: baseline;  /* Alinha os elementos pela linha de base (usada para texto). */
+                    align-items: flex-start;   /* Alinha os elementos no topo do contêiner. */
+                    align-items: flex-end; /* Alinha os elementos na parte inferior do contêiner. */
+                    align-items: center;   /* Centraliza os elementos verticalmente. */
+                /*ALIGN-ITEMS / FIM*/
+            
+            /* ALIGN-CONTENT / INICIO - Propriedades para alinhar múltiplas linhas de elementos. */
+                align-content: flex-start;/* Alinha as linhas de elementos na parte superior. */
+                align-content: flex-end;/* Alinha as linhas de elementos na parte inferior. */
+                align-content: center;/* Centraliza as linhas de elementos verticalmente. */
+                align-content: space-around;/* Distribui espaço entre as linhas de elementos. */
+                align-content: space-between; /* Distribui espaço entre as linhas de elementos, mas não nos extremos. */
+                /*ALIGN-CONTENT / FIM*/
+            }
+            </style>
 </head>
 
 <body>
