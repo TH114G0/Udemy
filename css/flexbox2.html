@@ -7,46 +7,67 @@
     <link rel="stylesheet" href="css/tag.css">
     <style>
         /* ... */
-       .flex-container div {
+        /* Define o modelo de caixa de todas as divs dentro de .flex-container. */
+        .flex-container div {
             box-sizing: border-box;
-       }
+        }
 
-       .flex-container {
+        /* Define .flex-container como um contêiner flexível. */
+        .flex-container {
             display: flex;
             height: 300px;
             width: 600px;
-       }
+        }
 
-       .flex-container div:nth-child(3) {
+        /* Seleciona a terceira div dentro de .flex-container e aplica estilos a ela. */
+        .flex-container div:nth-child(3) {
             background-color: indianred;
+            /* Define a cor de fundo como "indianred". */
             order: 1;
+            /* Altera a ordem da terceira div para 1. */
             order: 0;
+            /* Altera a ordem para 0 (anulando a regra anterior). */
             order: -1;
+            /* Altera a ordem para -1 (anulando novamente). */
             align-self: center;
+            /* Alinha verticalmente a terceira div ao centro. */
             align-self: flex-end;
+            /* Alinha verticalmente a terceira div na parte inferior. */
             align-self: flex-start;
-            align-self: stretch; 
-       }
+            /* Alinha verticalmente a terceira div no topo. */
+            align-self: stretch;
+            /* Faz a terceira div esticar para preencher a altura do contêiner. */
+        }
 
-
-       .flex-container div {
+        /* Define estilos para todas as divs dentro de .flex-container. */
+        .flex-container div {
             width: 100px;
+            /* Define a largura de todas as divs como 100px. */
             flex-grow: 0;
+            /* Define o crescimento flexível como 0 (não crescerá). */
             flex-grow: 1;
-       }
+            /* Define o crescimento flexível como 1 (crescerá igualmente). */
+        }
 
-       .flex-container div:nth-child(1) {
+        /* Seleciona a primeira div dentro de .flex-container e ajusta o crescimento flexível. */
+        .flex-container div:nth-child(1) {
             flex-grow: 2;
-       }
+            /* Define o crescimento flexível da primeira div como 2. */
+        }
 
-       .flex-container { 
+        /* Redefine a largura de .flex-container e aplica o encolhimento flexível. */
+        .flex-container {
             width: 300px;
+            /* Define a largura do contêiner como 300px. */
             flex-shrink: 1;
-       }
+            /* Define o encolhimento flexível como 1 (encolherá igualmente). */
+        }
 
-       .flex-container div:nth-child(1) {
+        /* Seleciona a primeira div dentro de .flex-container e ajusta o encolhimento flexível. */
+        .flex-container div:nth-child(1) {
             flex-shrink: 5;
-       }
+            /* Define o encolhimento flexível da primeira div como 5. */
+        }
     </style>
 </head>
 
